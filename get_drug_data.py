@@ -81,7 +81,6 @@ def get_data(cursor) -> dict:
             non_generic_id = non_generic_count
             non_generic_ids[non_generic_smiles] = non_generic_id
 
-
         data[record_id] = {}
         data[record_id]['name'] = name
         data[record_id]['smiles'] = smiles
