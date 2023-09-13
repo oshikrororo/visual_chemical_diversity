@@ -104,10 +104,10 @@ def write_tsv(path, data):
         file.write('Parent Compound\t'
                    'Preferred Name\t'
                    'SMILES\t'
-                   'Generic Scaffold SMILES\t'
-                   'Generic Scaffold ID\t'
                    'Non-generic Scaffold SMILES\t'
                    'Non-generic Scaffold ID\t'
+                   'Generic Scaffold SMILES\t'
+                   'Generic Scaffold ID\t'
                    'MESH Indications\t'
                    'EFO Indications\n')
         for record_id, row in data.items():
@@ -122,10 +122,10 @@ def write_tsv(path, data):
             file.write(f'{record_id}\t'
                        f'{row["name"]}\t'
                        f'{row["smiles"]}\t'
-                       f'{row["generic_scaffold"]}\t'
-                       f'{row["generic_id"]}\t'
                        f'{row["non_generic_scaffold"]}\t'
-                       f'{row["non_generic_id"]}\t'
+                       f'SCAFFA{row["non_generic_id"]}\t'
+                       f'{row["generic_scaffold"]}\t'
+                       f'SCAFFB{row["generic_id"]}\t'
                        f'{"|".join(mesh)}\t'
                        f'{"|".join(efo)}\n')
 
@@ -142,9 +142,9 @@ def main():
     try:
         with connection.cursor() as cursor:
             data = get_data(cursor)
-    # except Exception as ex:
-    #     print(ex)
-    #     return
+    except Exception as ex:
+        print(ex)
+        return
     finally:
         connection.close()
 
