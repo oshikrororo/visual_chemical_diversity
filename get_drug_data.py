@@ -148,7 +148,8 @@ def main():
     finally:
         connection.close()
 
-    path = 'C:\\Users\\georg\\OneDrive\\Документы\\лаба\\visual_chem_div\\drugs.tsv'
+    # insert path to table here
+    path = 'table.tsv'
     write_tsv(path, data)
 
 
